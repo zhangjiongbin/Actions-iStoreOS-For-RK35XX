@@ -64,7 +64,7 @@ echo -e "\\ndefine Device/dg_nas
 \$(call Device/rk3568)
   DEVICE_VENDOR := DG
   DEVICE_MODEL := NAS
-  DEVICE_DTS := rk3568-ido-CTB3516_230601
+  DEVICE_DTS := rk3568-dg-nas_20240423
   SUPPORTED_DEVICES += dg,nas
   DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
 endef
@@ -79,7 +79,7 @@ sed -i "s/panther,x2|\\\/panther,x2|\\\\\n	dg,nas|\\\/g" target/linux/rockchip/r
 
 cp -f $GITHUB_WORKSPACE/configfiles/rk3568-firefly-roc-pc-se-core.dtsi target/linux/rockchip/dts/rk3568/rk3568-firefly-roc-pc-se-core.dtsi
 
-cp -f $GITHUB_WORKSPACE/configfiles/rk3568-ido-CTB3516_230601.dts target/linux/rockchip/dts/rk3568/rk3568-ido-CTB3516_230601.dts
+cp -f $GITHUB_WORKSPACE/configfiles/rk3568-dg-nas_20240423.dts target/linux/rockchip/dts/rk3568/rk3568-dg-nas_20240423.dts
 
 
 
