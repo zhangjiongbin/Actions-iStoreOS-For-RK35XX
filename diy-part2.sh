@@ -77,16 +77,32 @@ endef
 TARGET_DEVICES += dg_nas" >> target/linux/rockchip/image/rk35xx.mk
 
 
+sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/lib/board/init.sh
+
+sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
+
+# 增加YS-F3588A
+echo -e "\\ndefine Device/ys_3588
+\$(call Device/rk3588)
+  DEVICE_VENDOR := YS
+  DEVICE_MODEL := 3588
+  DEVICE_DTS := YS-F3588A
+  SUPPORTED_DEVICES += ys,3588
+  DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
+endef
+TARGET_DEVICES += ys_3588" >> target/linux/rockchip/image/rk35xx.mk
 
 sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/lib/board/init.sh
 
 sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
 
 
+
 cp -f $GITHUB_WORKSPACE/configfiles/rk3568-firefly-roc-pc-se-core.dtsi target/linux/rockchip/dts/rk3568/rk3568-firefly-roc-pc-se-core.dtsi
 
 cp -f $GITHUB_WORKSPACE/configfiles/rk3568-dg-nas.dts target/linux/rockchip/dts/rk3568/rk3568-dg-nas.dts
 
+cp -f $GITHUB_WORKSPACE/configfiles/ys-f3588a.dts target/linux/rockchip/dts/rk3588/ys-f3588a.dts
 
 
 #集成黑豹X2和荐片TV盒子无线功能并且开启无线功能
