@@ -7,6 +7,15 @@
 # Blog: https://p3terx.com
 #===============================================
 
+
+# update ubus git HEAD
+cp -f $GITHUB_WORKSPACE/configfiles/ubus_Makefile package/system/ubus/Makefile
+
+
+# 近期istoreos网站文件服务器不稳定，临时增加一个自定义下载网址
+sed -i "s/push @mirrors, 'https:\/\/mirror2.openwrt.org\/sources';/&\\npush @mirrors, 'https:\/\/github.com\/xiaomeng9597\/files\/releases\/download\/iStoreosFile';/g" scripts/download.pl
+
+
 # 移植黑豹x2
 
 # rm -f target/linux/rockchip/image/rk35xx.mk
@@ -19,9 +28,6 @@
 
 # rm -f target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
 # cp -f $GITHUB_WORKSPACE/configfiles/02_network target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
-
-
-# sed -i "s/option\s*script_timeout\s*60/option script_timeout 360/g" package/network/services/uhttpd/files/uhttpd.config
 
 
 
@@ -72,9 +78,9 @@ TARGET_DEVICES += dg_nas" >> target/linux/rockchip/image/rk35xx.mk
 
 
 
-sed -i "s/panther,x2|\\\/panther,x2|\\\\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/lib/board/init.sh
+sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/lib/board/init.sh
 
-sed -i "s/panther,x2|\\\/panther,x2|\\\\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
+sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
 
 
 cp -f $GITHUB_WORKSPACE/configfiles/rk3568-firefly-roc-pc-se-core.dtsi target/linux/rockchip/dts/rk3568/rk3568-firefly-roc-pc-se-core.dtsi
@@ -83,6 +89,15 @@ cp -f $GITHUB_WORKSPACE/configfiles/rk3568-dg-nas.dts target/linux/rockchip/dts/
 
 
 
-#增加黑豹X2的一键补全WiFi脚本进系统里
-cp -f $GITHUB_WORKSPACE/configfiles/brcmfmac43430-sdio-panther-x2.sh package/base-files/files/sbin/brcmfmac43430-sdio-panther-x2.sh
-chmod 755 package/base-files/files/sbin/brcmfmac43430-sdio-panther-x2.sh
+#集成黑豹X2和荐片TV盒子无线功能并且开启无线功能
+cp -a $GITHUB_WORKSPACE/configfiles/firmware/* package/firmware/
+cp -f $GITHUB_WORKSPACE/configfiles/opwifi package/base-files/files/etc/init.d/opwifi
+chmod 755 package/base-files/files/etc/init.d/opwifi
+sed -i "s/wireless.radio\${devidx}.disabled=1/wireless.radio\${devidx}.disabled=0/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+
+
+#集成CPU性能跑分脚本
+cp -a $GITHUB_WORKSPACE/configfiles/coremark/* package/base-files/files/sbin/
+chmod 755 package/base-files/files/sbin/coremark
+chmod 755 package/base-files/files/sbin/coremark.sh
