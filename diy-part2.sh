@@ -92,9 +92,9 @@ echo -e "\\ndefine Device/ys_3588
 endef
 TARGET_DEVICES += ys_3588" >> target/linux/rockchip/image/rk35xx.mk
 
-sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/lib/board/init.sh
+sed -i "s/panther,x2|\\\/&\\n	ys,3588|\\\/g" target/linux/rockchip/rk35xx/base-files/lib/board/init.sh
 
-sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
+sed -i "s/panther,x2|\\\/&\\n	ys,3588|\\\/g" target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
 
 
 
