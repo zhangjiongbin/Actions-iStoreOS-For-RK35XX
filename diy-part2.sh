@@ -49,6 +49,8 @@ cp -f $GITHUB_WORKSPACE/configfiles/rk3566-jp-tvbox.dts target/linux/rockchip/dt
 
 cp -f $GITHUB_WORKSPACE/configfiles/rk3566-panther-x2.dts target/linux/rockchip/dts/rk3568/rk3566-panther-x2.dts
 
+cp -f $GITHUB_WORKSPACE/configfiles/YS-F3588A.dts target/linux/rockchip/dts/rk3588/YS-F3588A.dts
+
 
 
 #修改uhttpd配置文件，启用nginx
@@ -97,6 +99,8 @@ TARGET_DEVICES += rockchip_rk3588-evb7-lp4-v10" >> target/linux/rockchip/image/r
 cp -f $GITHUB_WORKSPACE/configfiles/rk3568-firefly-roc-pc-se-core.dtsi target/linux/rockchip/dts/rk3568/rk3568-firefly-roc-pc-se-core.dtsi
 
 cp -f $GITHUB_WORKSPACE/configfiles/rk3568-dg-nas.dts target/linux/rockchip/dts/rk3568/rk3568-dg-nas.dts
+
+cp -f $GITHUB_WORKSPACE/configfiles/YS-F3588A.dts target/linux/rockchip/dts/rk3588/YS-F3588A.dts
 
 
 
