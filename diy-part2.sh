@@ -81,6 +81,17 @@ sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-fi
 
 sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
 
+# 增加YS-F3588A
+echo -e "\\ndefine Device/rockchip_rk3588-evb7-lp4-v10
+\$(call Device/rk3588)
+  DEVICE_VENDOR := Rockchip
+  DEVICE_MODEL := RK3588 EVB7 LP4 V10 Board
+  DEVICE_DTS := YS-F3588A
+  SUPPORTED_DEVICES += rockchip,rk3588-evb7-lp4-v10
+  DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
+endef
+TARGET_DEVICES += rockchip_rk3588-evb7-lp4-v10" >> target/linux/rockchip/image/rk35xx.mk
+
 
 
 cp -f $GITHUB_WORKSPACE/configfiles/rk3568-firefly-roc-pc-se-core.dtsi target/linux/rockchip/dts/rk3568/rk3568-firefly-roc-pc-se-core.dtsi
