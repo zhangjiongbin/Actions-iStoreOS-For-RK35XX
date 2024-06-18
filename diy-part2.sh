@@ -88,7 +88,7 @@ echo -e "\\ndefine Device/rockchip_rk3588-evb7-lp4-v10
 \$(call Device/rk3588)
   DEVICE_VENDOR := Rockchip
   DEVICE_MODEL := RK3588 EVB7 LP4 V10 Board
-  DEVICE_DTS := YS-F3588A
+  DEVICE_DTS := YS-F3588A-kd
   SUPPORTED_DEVICES += rockchip,rk3588-evb7-lp4-v10
   DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
 endef
