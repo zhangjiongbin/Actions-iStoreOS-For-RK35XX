@@ -49,7 +49,7 @@ cp -f $GITHUB_WORKSPACE/configfiles/rk3566-jp-tvbox.dts target/linux/rockchip/dt
 
 cp -f $GITHUB_WORKSPACE/configfiles/rk3566-panther-x2.dts target/linux/rockchip/dts/rk3568/rk3566-panther-x2.dts
 
-cp -f $GITHUB_WORKSPACE/configfiles/F3588a2.dts target/linux/rockchip/dts/rk3588/F3588a2.dts
+cp -f $GITHUB_WORKSPACE/configfiles/F3588a2.dts target/linux/rockchip/dts/rk3588/F3588A.dts
 
 
 
@@ -100,7 +100,7 @@ cp -f $GITHUB_WORKSPACE/configfiles/rk3568-firefly-roc-pc-se-core.dtsi target/li
 
 cp -f $GITHUB_WORKSPACE/configfiles/rk3568-dg-nas.dts target/linux/rockchip/dts/rk3568/rk3568-dg-nas.dts
 
-cp -f $GITHUB_WORKSPACE/configfiles/F3588a2.dts target/linux/rockchip/dts/rk3588/F3588a2.dts
+cp -f $GITHUB_WORKSPACE/configfiles/F3588a2.dts target/linux/rockchip/dts/rk3588/F3588A.dts
 
 
 
