@@ -49,7 +49,6 @@ cp -f $GITHUB_WORKSPACE/configfiles/rk3566-jp-tvbox.dts target/linux/rockchip/dt
 
 cp -f $GITHUB_WORKSPACE/configfiles/rk3566-panther-x2.dts target/linux/rockchip/dts/rk3568/rk3566-panther-x2.dts
 
-cp -f $GITHUB_WORKSPACE/configfiles/ys-F3588A.dts target/linux/rockchip/dts/rk3588/ys-F3588A.dts
 
 
 
