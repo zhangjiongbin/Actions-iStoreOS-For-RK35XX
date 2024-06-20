@@ -99,7 +99,7 @@ cp -f $GITHUB_WORKSPACE/configfiles/rk3568-firefly-roc-pc-se-core.dtsi target/li
 
 cp -f $GITHUB_WORKSPACE/configfiles/rk3568-dg-nas.dts target/linux/rockchip/dts/rk3568/rk3568-dg-nas.dts
 
-cp -f $GITHUB_WORKSPACE/configfiles/ys-F3588A.dts target/linux/rockchip/dts/rk3588/ys-F3588A.dts
+cp -f $GITHUB_WORKSPACE/configfiles/YS-F3588A.dts target/linux/rockchip/dts/rk3588/YS-F3588A.dts
 
 
 
