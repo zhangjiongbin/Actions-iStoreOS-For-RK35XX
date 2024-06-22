@@ -40,6 +40,9 @@
 | T68M     | istoreos-rockchip-rk35xx-lyt_t68m-squashfs-combined.img.gz     |
 | JIANPIAN-TVBOX     | istoreos-rockchip-rk35xx-jp_tvbox-squashfs-sysupgrade.img.gz     |
 | PANTHER-X2     | istoreos-rockchip-rk35xx-panther_x2-squashfs-sysupgrade.img.gz     |
+| DG-NAS     | storeos-rockchip-rk35xx-dg_nas-squashfs-sysupgrade.img.gz     |
+| E20C-     | storeos-rockchip-rk35xx-dg_nas-squashfs-sysupgrade.img.gz     |
+
 
 ### x86 架构
 
