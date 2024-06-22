@@ -35,13 +35,13 @@ jobs:
           #- istoreos-23.05
         ARCHITECTURE:
           - rk35xx
-         # - x86
+          - x86
         os:
           - ubuntu-22.04
         include:
           # - REPO_BRANCH: istoreos-23.05
           - REPO_BRANCH: istoreos-22.03
-           # ARCHITECTURE: x86-alpha
+            ARCHITECTURE: x86-alpha
             os: ubuntu-22.04
 
       fail-fast: false
