@@ -83,20 +83,18 @@ sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-fi
 sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
 
 # 增加YS-F3588A
-echo -e "\\ndefine Device/ys_f3588a
+echo -e "\\ndefine Device/rk3588-evb7-lp4-v10
 \$(call Device/rk3588)
   DEVICE_VENDOR := Rockchip
-  #DEVICE_MODEL := RK3588 EVB7 LP4 V10 Board
-  DEVICE_MODEL := F3588A
+  DEVICE_MODEL := RK3588 EVB7 LP4 V10 Board
   DEVICE_DTS := YS-F3588A
-  #SUPPORTED_DEVICES += rockchip,rk3588-evb7-lp4-v10
-  SUPPORTED_DEVICES += ys,f3588a
+  SUPPORTED_DEVICES += rockchip,rk3588-evb7-lp4-v10
   DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
 endef
-TARGET_DEVICES += ys,f3588a" >> target/linux/rockchip/image/rk35xx.mk
+TARGET_DEVICES += rockchip_rk3588-evb7-lp4-v10" >> target/linux/rockchip/image/rk35xx.mk
 
 # 增加RK3566-HJQ
-echo -e "\\ndefine Device/rk3566-hjq
+echo -e "\\ndefine Device/rk3566-evb2-lp4x-v10
 \$(call Device/rk3566)
   DEVICE_VENDOR := Rockchip
   DEVICE_MODEL := RK3566 EVB2 LP4X V10 Board
