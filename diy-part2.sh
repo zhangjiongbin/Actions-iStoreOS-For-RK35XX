@@ -94,15 +94,15 @@ endef
 TARGET_DEVICES += rockchip_rk3588-evb7-lp4-v10" >> target/linux/rockchip/image/rk35xx.mk
 
 # 增加RK3566-HJQ
-echo -e "\\ndefine Device/rockchip_rk3566-evb2-lp4x-v10
-\$(call Device/rk3566)
-  DEVICE_VENDOR := Rockchip
-  DEVICE_MODEL := RK3566 EVB2 LP4X V10 Board
-  DEVICE_DTS := rk3566-hjq
-  SUPPORTED_DEVICES += rockchip,rk3566-evb2-lp4x-v10
-  DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
-endef
-TARGET_DEVICES += rockchip_rk3566-evb2-lp4x-v10" >> target/linux/rockchip/image/rk35xx.mk
+#echo -e "\\ndefine Device/rockchip_rk3566-evb2-lp4x-v10
+#\$(call Device/rk3566)
+ # DEVICE_VENDOR := Rockchip
+ # DEVICE_MODEL := RK3566 EVB2 LP4X V10 Board
+ # DEVICE_DTS := rk3566-hjq
+ # SUPPORTED_DEVICES += rockchip,rk3566-evb2-lp4x-v10
+ # DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
+#endef
+#TARGET_DEVICES += rockchip_rk3566-evb2-lp4x-v10" >> target/linux/rockchip/image/rk35xx.mk
 
 
 cp -f $GITHUB_WORKSPACE/configfiles/rk3568-firefly-roc-pc-se-core.dtsi target/linux/rockchip/dts/rk3568/rk3568-firefly-roc-pc-se-core.dtsi
@@ -111,7 +111,7 @@ cp -f $GITHUB_WORKSPACE/configfiles/rk3568-dg-nas.dts target/linux/rockchip/dts/
 
 cp -f $GITHUB_WORKSPACE/configfiles/YS-F3588A.dts target/linux/rockchip/dts/rk3588/YS-F3588A.dts
 
-cp -f $GITHUB_WORKSPACE/configfiles/rk3566-hjq.dts target/linux/rockchip/dts/rk3568/rk3566-hjq.dts
+#cp -f $GITHUB_WORKSPACE/configfiles/rk3566-hjq.dts target/linux/rockchip/dts/rk3568/rk3566-hjq.dts
 
 
 
