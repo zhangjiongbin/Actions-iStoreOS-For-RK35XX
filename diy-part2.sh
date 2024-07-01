@@ -51,6 +51,7 @@ cp -f $GITHUB_WORKSPACE/configfiles/rk3566-panther-x2.dts target/linux/rockchip/
 
 
 
+
 #修改uhttpd配置文件，启用nginx
 # sed -i "/.*uhttpd.*/d" .config
 # sed -i '/.*\/etc\/init.d.*/d' package/network/services/uhttpd/Makefile
@@ -70,30 +71,56 @@ echo -e "\\ndefine Device/dg_nas
 \$(call Device/rk3568)
   DEVICE_VENDOR := DG
   DEVICE_MODEL := NAS
-  DEVICE_DTS := rk3568-firefly-roc-pc-se
+  DEVICE_DTS := rk3568-dg-nas
   SUPPORTED_DEVICES += dg,nas
   DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
 endef
 TARGET_DEVICES += dg_nas" >> target/linux/rockchip/image/rk35xx.mk
 
 
-
 sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/lib/board/init.sh
 
 sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
 
+# 增加YS-F3588A
+echo -e "\\ndefine Device/rockchip_rk3588-evb7-lp4-v10
+\$(call Device/rk3588)
+  DEVICE_VENDOR := Rockchip
+  DEVICE_MODEL := RK3588 EVB7 LP4 V10 Board
+  DEVICE_DTS := YS-F3588A
+  SUPPORTED_DEVICES += rockchip,rk3588-evb7-lp4-v10
+  DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
+endef
+TARGET_DEVICES += rockchip_rk3588-evb7-lp4-v10" >> target/linux/rockchip/image/rk35xx.mk
+
+# 增加RK3566-HJQ
+#echo -e "\\ndefine Device/rockchip_rk3566-evb2-lp4x-v10
+#\$(call Device/rk3566)
+ # DEVICE_VENDOR := Rockchip
+ # DEVICE_MODEL := RK3566 EVB2 LP4X V10 Board
+ # DEVICE_DTS := rk3566-hjq
+ # SUPPORTED_DEVICES += rockchip,rk3566-evb2-lp4x-v10
+ # DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
+#endef
+#TARGET_DEVICES += rockchip_rk3566-evb2-lp4x-v10" >> target/linux/rockchip/image/rk35xx.mk
+
 
 cp -f $GITHUB_WORKSPACE/configfiles/rk3568-firefly-roc-pc-se-core.dtsi target/linux/rockchip/dts/rk3568/rk3568-firefly-roc-pc-se-core.dtsi
 
-cp -f $GITHUB_WORKSPACE/configfiles/rk3568-firefly-roc-pc-se.dts target/linux/rockchip/dts/rk3568/rk3568-firefly-roc-pc-se.dts
+cp -f $GITHUB_WORKSPACE/configfiles/rk3568-dg-nas.dts target/linux/rockchip/dts/rk3568/rk3568-dg-nas.dts
+
+cp -f $GITHUB_WORKSPACE/configfiles/YS-F3588A.dts target/linux/rockchip/dts/rk3588/YS-F3588A.dts
+
+#cp -f $GITHUB_WORKSPACE/configfiles/rk3566-hjq.dts target/linux/rockchip/dts/rk3568/rk3566-hjq.dts
+
 
 
 
 #轮询检查ubus服务是否崩溃，崩溃就重启ubus服务
 cp -f $GITHUB_WORKSPACE/configfiles/httpubus package/base-files/files/etc/init.d/httpubus
-cp -f $GITHUB_WORKSPACE/configfiles/ubus-status.sh package/base-files/files/bin/ubus-status.sh
+cp -f $GITHUB_WORKSPACE/configfiles/ubus-status.sh package/base-files/files/sbin/ubus-status.sh
 chmod 755 package/base-files/files/etc/init.d/httpubus
-chmod 755 package/base-files/files/bin/ubus-status.sh
+chmod 755 package/base-files/files/sbin/ubus-status.sh
 
 
 
@@ -106,6 +133,6 @@ sed -i "s/wireless.radio\${devidx}.disabled=1/wireless.radio\${devidx}.disabled=
 
 
 #集成CPU性能跑分脚本
-cp -a $GITHUB_WORKSPACE/configfiles/coremark/* package/base-files/files/bin/
-chmod 755 package/base-files/files/bin/coremark
-chmod 755 package/base-files/files/bin/coremark.sh
+cp -a $GITHUB_WORKSPACE/configfiles/coremark/* package/base-files/files/sbin/
+chmod 755 package/base-files/files/sbin/coremark
+chmod 755 package/base-files/files/sbin/coremark.sh
