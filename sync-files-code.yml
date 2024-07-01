@@ -1,0 +1,44 @@
+name: Sync Files code
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: 55 15 * * *
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 准备完成
+      uses: actions/checkout@main
+
+    - name: 下载源码
+      run: |
+        sudo mkdir -p /mnt/xiaomeng9597
+        sudo chown $USER:$GROUPS /mnt/xiaomeng9597
+        sudo mkdir -p /mnt/xiaomeng9597/workdir
+        sudo chown $USER:$GROUPS /mnt/xiaomeng9597/workdir
+        cd /mnt/xiaomeng9597
+        wget https://github.com/xiaomeng9597/files/releases/download/files/Actions-iStoreOS-For-RK35XX-main.tar.gz
+        tar -xvf Actions-iStoreOS-For-RK35XX-main.tar.gz
+        cp -a Actions-iStoreOS-For-RK35XX-main/* /mnt/xiaomeng9597/workdir/
+
+    - name: 同步配置
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.ACCESS_TOKEN }}
+        publish_branch: main
+        publish_dir: /mnt/xiaomeng9597/workdir
+        user_name: 'GitHub Action'
+        user_email: 'github-actions[bot]@github.com'
+        exclude_assets: ''
+        keep_files: true
+        commit_message: "Sync files"
+
+    - name: 删除运行记录
+      uses: xiaomeng9597/delete-workflow-runs@main
+      with:
+        retain_days: 1
+        keep_minimum_runs: 1
+        token: ${{ secrets.ACCESS_TOKEN }}
