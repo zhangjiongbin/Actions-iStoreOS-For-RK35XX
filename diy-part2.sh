@@ -89,7 +89,7 @@ echo -e "\\ndefine Device/ys_f3588a
   DEVICE_MODEL := RK3588 EVB7 LP4 V10 Board
   DEVICE_DTS := YS-F3588A
   SUPPORTED_DEVICES += ys,f3588a
-  DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
+  DEVICE_PACKAGES := kmod-nvme kmod-scsi-core rkwifi-firmware-ap6275p kmod-scsi-core kmod-hwmon-pwmfan kmod-thermal
 endef
 TARGET_DEVICES += ys_f3588a" >> target/linux/rockchip/image/rk35xx.mk
 
@@ -99,8 +99,8 @@ echo -e "\\ndefine Device/rk3566_hjq
   DEVICE_VENDOR := Rockchip
   DEVICE_MODEL := RK3566 EVB2 LP4X V10 Board
   DEVICE_DTS := rk3566-hjq
-  SUPPORTED_DEVICES += rk3566_hjq
-  DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
+  SUPPORTED_DEVICES += rk3566,hjq
+  DEVICE_PACKAGES := kmod-scsi-core kmod-hwmon-pwmfan kmod-thermal kmod-switch-rt8201f swconfig
 endef
 TARGET_DEVICES += rk3566_hjq" >> target/linux/rockchip/image/rk35xx.mk
 
